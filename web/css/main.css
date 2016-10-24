@@ -1,0 +1,36 @@
+body {
+    padding-top: 70px;
+    opacity: 0.9;
+    background: url('/img/papyrus.jpg');
+
+}
+
+.jumbotron {
+    background-color: #ffe;
+    border-radius: 25px;
+}
+
+.content {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffe;
+    text-align: justify;
+    margin-bottom: 50px;
+}
+.second
+
+.panel-default {
+    border-color: #fec;
+}
+
+.panel-default > .panel-heading {
+    background-color: #ffe;
+    border-color: #fec;
+    background-image: linear-gradient(to bottom,#fcf8e3 0,#faf2cc 100%);
+}
+
+.footer {
+    height: 30px;
+    border-top: 1px solid orange;
+    background-color: #ffe;
+}
