@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Acient Planet - Admin Panel</title>
+    <link href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/dist/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+  </head>
+  <body>
+  {% block nav %}{% endblock %}
+  <div class="container" role="main">
+  {% block jumbotron %}{% endblock %}
+  {% block row %} {% endblock %}
+  <footer class="footer navbar-fixed-bottom">
+      <div class="container">
+        <p class="text-muted">2016 &copy; Powered by: <a "https://github.com/oizdar">oizdar.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+

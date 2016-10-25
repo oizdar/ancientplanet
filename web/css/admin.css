@@ -1,0 +1,11 @@
+.jumbotron {
+    border: 4px double orange;
+}
+
+.alert-danger {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #944;
+    border-radius: 10px;
+    margin: 10px 0;
+}
