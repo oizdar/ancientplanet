@@ -14,8 +14,10 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $this->templateData['jumbotron']['header'] = 'Powitanie';
-        $this->templateData['jumbotron']['content'] = 'Lorem ipsum .. .. .. .. ';
+        $extras = $this->getDoctrine()->getRepository('AppBundle:Extras');
+        $extra = $extras->findOneByType('jumbotron');
+        $this->templateData['jumbotron']['header'] = $extra->getHeader();
+        $this->templateData['jumbotron']['content'] = $extra->getContent();
         return $this->render('default/index.html.twig', $this->templateData);
     }
 }

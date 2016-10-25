@@ -1,5 +1,9 @@
 .jumbotron {
-    border: 4px double orange;
+    border: 4px double #fda;
+}
+
+.content {
+    border: 4px double #fda;
 }
 
 .alert-danger {
@@ -8,4 +12,10 @@
     border: 1px solid #944;
     border-radius: 10px;
     margin: 10px 0;
+}
+
+.extras-row {
+    margin: 10px 0;
+    border: 1px solid #fda;
+    border-radius: 0 0 15px 15px;
 }

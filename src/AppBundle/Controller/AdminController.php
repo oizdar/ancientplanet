@@ -6,13 +6,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class AdminController extends Controller
 {
     private $templateData = [];
 
     /**
-     * @Route("/admin", name="admin_homepage")
+     * @Route("/admin/", name="admin_homepage")
      */
     public function indexAction()
     {
@@ -20,17 +21,13 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/login", name="admin_login")
+     * @Route("/admin/login/", name="admin_login")
      */
     public function loginAction(Request $request)
     {
-        /*$user = new \AppBundle\Entity\User();
-$plainPassword = 'pass';
-$encoder = $this->container->get('security.password_encoder');
-$encoded = $encoder->encodePassword($user, $plainPassword);
-
-$user->setPassword($encoded);*/
-
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            return $this->redirect('/admin');
+        }
         $authenticationUtils = $this->get('security.authentication_utils');
         $this->templateData['error'] = $authenticationUtils->getLastAuthenticationError();
         $this->templateData['username'] = $authenticationUtils->getLastUsername();
@@ -38,7 +35,7 @@ $user->setPassword($encoded);*/
     }
 
     /**
-     * @Route("/admin/logout", name="admin_logout")
+     * @Route("/admin/logout/", name="admin_logout")
      */
     public function logoutAction(Request $request)
     {

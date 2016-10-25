@@ -1,0 +1,63 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block row %}
+    <div class="content col-sm-offset-2 col-sm-8">
+    <h2> Update data of your {{ form.type.vars.value|capitalize }}.</h2>
+      {{ form_start(form) }}
+      {{ form_errors(form) }}
+
+      <div class="form-group row">
+        {{ form_label(form.header, 'Header: ', {
+            'label_attr':
+              {'class': 'col-sm-2 col-form-label'}
+          }) }}
+        {{ form_errors(form.header) }}
+        <div class="col-sm-7">
+          {{ form_widget(form.header, {
+            'attr': {
+              'class': 'form-control',
+              'disabled': disabled.header
+            }
+          }) }}
+        </div>
+      </div>
+
+      <div class="form-group row">
+          {{ form_label(form.content, 'Content text: ', {
+            'label_attr':
+              {'class': 'col-sm-2 col-form-label'}
+          }) }}
+        {{ form_errors(form.content) }}
+        <div class="col-sm-7">
+          {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+        </div>
+      </div>
+
+      <div class="form-group row">
+        {{ form_label(form.footer, 'Footer: ', {
+            'label_attr':
+              {'class': 'col-sm-2 col-form-label'}
+          }) }}
+        {{ form_errors(form.footer) }}
+        <div class="col-sm-7">
+          {{ form_widget(form.footer, {
+            'attr': {
+              'class': 'form-control input-small',
+              'id': 'footer',
+              'placeholder': 'Write footer message',
+              'disabled': disabled.footer
+            }
+          }) }}
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-7 col-sm-offset-2">
+        {{ form_widget(form.submit) }}
+        </div>
+      </div>
+
+      {{ form_end(form) }}
+    </div>
+{% endblock %}
+

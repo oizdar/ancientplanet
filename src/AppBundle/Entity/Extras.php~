@@ -1,0 +1,38 @@
+<?php
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="extras")
+ * @ORM\Entity(repositoryClass="ExtrasRepository")
+ */
+class Extras
+{
+    /**
+     * @ORM\Column(type="integer", nullable=false, options={"unsiged"=true})
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $header;
+
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $footer;
+
+    /**
+     * @ORM\Column(type="string", length=10, nullable=false)
+     */
+    private $type;
+}

@@ -24,10 +24,10 @@ security:
         main:
             anonymous: ~
             form_login:
-                login_path: /admin/login
-                check_path: /admin/login
+                login_path: /admin/login/
+                check_path: /admin/login/
             logout:
-                path: /admin/logout
+                path: /admin/logout/
                 target: /
             # activate different ways to authenticate
 

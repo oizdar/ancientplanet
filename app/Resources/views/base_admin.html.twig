@@ -13,14 +13,16 @@
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
   </head>
   <body>
-  {% block nav %}{% endblock %}
-  <div class="container" role="main">
-  {% block jumbotron %}{% endblock %}
-  {% block row %} {% endblock %}
-  <footer class="footer navbar-fixed-bottom">
-      <div class="container">
-        <p class="text-muted">2016 &copy; Powered by: <a "https://github.com/oizdar">oizdar.</p>
-      </div>
+  {% block include_nav %}
+    {% include('admin/admin_nav.html.twig') %}
+  {% endblock %}
+    <div class="container" role="main">
+    {% block jumbotron %}{% endblock %}
+    {% block row %}{% endblock %}
+    <footer class="footer navbar-fixed-bottom">
+        <div class="container">
+          <p class="text-muted">2016 &copy; Powered by: <a "https://github.com/oizdar">oizdar.</p>
+        </div>
     </footer>
   </body>
 </html>

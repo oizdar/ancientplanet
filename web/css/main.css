@@ -1,7 +1,8 @@
 body {
     padding-top: 70px;
-    opacity: 0.9;
+    opacity: 0.85;
     background: url('/img/papyrus.jpg');
+    background-attachment: fixed;
 
 }
 
@@ -25,12 +26,12 @@ body {
 
 .panel-default > .panel-heading {
     background-color: #ffe;
-    border-color: #fec;
+    border-color: #fda;
     background-image: linear-gradient(to bottom,#fcf8e3 0,#faf2cc 100%);
 }
 
 .footer {
     height: 30px;
-    border-top: 1px solid orange;
+    border-top: 1px solid #fda;
     background-color: #ffe;
 }
