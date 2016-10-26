@@ -36,43 +36,41 @@
   {% endblock %}
   <div class="container" role="main">
   {% block jumbotron %}{% endblock %}
-  {% block row_container %}
+  {% block row %}
     <div class="row">
-        <div class="content col-sm-8 col-md-8 col-lg-8">
+        <div class="content col-sm-9">
         {% block content %}
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum turpis est, nec pharetra lectus tempus a. Cras tempor eros augue, ut condimentum ex vulputate eu. Nulla facilisi. Nullam ac interdum orci. Suspendisse vitae elit et mauris imperdiet varius. Suspendisse potenti. Pellentesque laoreet pellentesque arcu in tincidunt. Aenean hendrerit, turpis sit amet porttitor condimentum, lorem turpis tincidunt tortor, a tempus metus ex quis mi.</p>
       {% endblock %}
       </div>
-
-      <div class="col-sm-4 col-md-4 col-lg-4">
-        &nbsp;
+      <div class="col-sm-3">
         {% block right_panel %}
         <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Egypt</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">Egypt</h3>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Persia</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
+          <div class="panel-body">
+            Panel content
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Persia</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Persia</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Persia</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
           </div>
         </div>
         {% endblock %}
+      </div>
     </div>
   {% endblock %}
   {% block content2 %}{% endblock %}

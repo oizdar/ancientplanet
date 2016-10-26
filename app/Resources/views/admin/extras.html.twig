@@ -9,57 +9,29 @@
             <tbody>
               <tr>
                 <th>Type:</th>
-                <td colspan="2">{{ extra.type }}</td>
+                <td>{{ extra.type }}</td>
+                <td style="text-align: right">
+                  <a class="btn btn-warning"
+                    href="{{ path('admin_extras_edit', {'id': extra.id}) }}">
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"> </span> Edit
+                  </a>
+                </td>
               </tr>
               <tr>
                 <th>Header:</th>
                 <td colspan="2">
-                    {{ extra.header ?: '<em>Footer is empty</em>' }}
+                    {{ extra.header ?: 'Header is empty' }}
                 </td>
               </tr>
               <tr>
                 <th>Content:</th>
-                <td>{{ extra.content|raw }}</td>
-                <td>
-                  <a class="btn btn-warning"
-                    href="{{ path('admin_extras_edit', {'id': extra.id}) }}">
-                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
-                  </a>
-                </td>
+                <td colspan="2">{{ extra.content|raw }}</td>
+
               </tr>
               <tr>
                 <th>Footer:</th>
                 <td colspan="2">
                     {{ extra.footer ?: 'Footer is empty' }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
-          <div class="extras-row">
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <th>Type:</th>
-                <td colspan="2">{{ extra.type }}</td>
-              </tr>
-              <tr>
-                <th>Header:</th>
-                <td colspan="2">{{ extra.header }}</td>
-              </tr>
-              <tr>
-                <th>Content:</th>
-                <td>{{ extra.content }}</td>
-                <td> <a class="btn btn-info" href="#"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a></div></td>
-              </tr>
-              <tr>
-                <th>Footer:</th>
-                <td colspan="2">
-                  {% if extra.footer %}
-                    {{ extra.footer }}
-                  {% else %}
-                    <em>Footer is empty</em>
-                  {% endif %}
                 </td>
               </tr>
             </tbody>

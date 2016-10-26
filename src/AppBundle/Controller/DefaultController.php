@@ -16,8 +16,14 @@ class DefaultController extends Controller
     {
         $extras = $this->getDoctrine()->getRepository('AppBundle:Extras');
         $extra = $extras->findOneByType('jumbotron');
+        $panels = $extras->findByType('panel');
+        $panelsHead = $extras->findByType('panel_head');
         $this->templateData['jumbotron']['header'] = $extra->getHeader();
         $this->templateData['jumbotron']['content'] = $extra->getContent();
+
+        $this->templateData['panels'] = $panels;
+        $this->templateData['panels_head'] = $panelsHead;
+
         return $this->render('default/index.html.twig', $this->templateData);
     }
 }

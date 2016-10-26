@@ -11,9 +11,8 @@ body {
     border-radius: 25px;
 }
 
-.jumbotron > h1, .jumbotron > h2, .jumbotron > h3 {
+h1, h2, .jumbotron > h3 {
     text-shadow: rgb(150, 150, 150) -2px -2px 3px;
-    text-decoration: underline;
 }
 
 .content {

@@ -24,3 +24,7 @@ h1, h2 {
     text-shadow: rgb(150, 150, 150) -2px -2px 3px;
     margin-bottom: 1em;
 }
+
+.extras-row > table th {
+    width: 80px;
+}

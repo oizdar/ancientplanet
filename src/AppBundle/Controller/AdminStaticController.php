@@ -34,7 +34,12 @@ class AdminStaticController extends Controller
         $extra = $extras->find($id);
         switch ($extra->getType()) {
             case 'jumbotron':
+            case 'panel_head':
                 $this->templateData['disabled']['header'] = false;
+                $this->templateData['disabled']['footer'] = true;
+                break;
+            case 'panel':
+                $this->templateData['disabled']['header'] = true;
                 $this->templateData['disabled']['footer'] = true;
                 break;
             default:
