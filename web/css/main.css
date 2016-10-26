@@ -11,6 +11,11 @@ body {
     border-radius: 25px;
 }
 
+.jumbotron > h1, .jumbotron > h2, .jumbotron > h3 {
+    text-shadow: rgb(150, 150, 150) -2px -2px 3px;
+    text-decoration: underline;
+}
+
 .content {
     padding: 20px;
     border-radius: 15px;
@@ -18,7 +23,6 @@ body {
     text-align: justify;
     margin-bottom: 50px;
 }
-.second
 
 .panel-default {
     border-color: #fec;

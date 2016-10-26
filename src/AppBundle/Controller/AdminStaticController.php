@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -46,10 +46,13 @@ class AdminStaticController extends Controller
         $form = $this->createFormBuilder($extra)
             ->add('id', HiddenType::class)
             ->add('header', TextType::class)
-            ->add('content', TextareaType::class)
+            ->add('content', CKEditorType::class, ['config_name' => 'main_toolbar'])
             ->add('footer', TextType::class)
             ->add('type', HiddenType::class)
-            ->add('submit', SubmitType::class, array('label' => 'Save changes'))
+            ->add('submit', SubmitType::class, [
+                'label' => 'Save changes',
+                'attr' => ['class' => 'btn btn-warning']
+            ])
             ->getForm();
 
         $form->handleRequest($request);

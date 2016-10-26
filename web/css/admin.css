@@ -19,3 +19,8 @@
     border: 1px solid #fda;
     border-radius: 0 0 15px 15px;
 }
+
+h1, h2 {
+    text-shadow: rgb(150, 150, 150) -2px -2px 3px;
+    margin-bottom: 1em;
+}

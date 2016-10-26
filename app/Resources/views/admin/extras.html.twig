@@ -19,7 +19,7 @@
               </tr>
               <tr>
                 <th>Content:</th>
-                <td>{{ extra.content }}</td>
+                <td>{{ extra.content|raw }}</td>
                 <td>
                   <a class="btn btn-warning"
                     href="{{ path('admin_extras_edit', {'id': extra.id}) }}">

@@ -66,3 +66,23 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+ivory_ck_editor:
+    configs:
+        main_toolbar:
+            toolbar: "main_toolbar"
+            uiColor: "#ffdd99"
+    toolbars:
+        configs:
+            main_toolbar: [ "Source", "@edit", "@link", "@special", "@color", "@tool", "/", "@font", "@items", "@justify"]
+        items:
+            edit:     [ "Cut", "Copy", "Paste", "-", "Undo", "Redo" ]
+            items:    [ "Bold", "Italic", "Underline", "Strike", "Subscript", "RemoveFormat"]
+            link:     [ "Link", "Unlink" ]
+            color:    [ "TextColor", "BGColor" ]
+            font:     [ "Font", "FontSize"]
+            styles-special: [ Outdent", "Indent", "Blockquote", "Table", "SpecialChar"]
+            justify:  [ "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"]
+            tool:     [ "ShowBlocks", "Maximize" ]
+            special:  [ "Image", "NumberedList", "BulletedList", "HorizontalRule", "Smiley"]
+            media:    ["button1", "button2", "button3", "oembed", "MediaEmbed"] #Buttons doesn't worked check later???

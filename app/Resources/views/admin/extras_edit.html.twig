@@ -1,7 +1,7 @@
 {% extends 'base_admin.html.twig' %}
 
 {% block row %}
-    <div class="content col-sm-offset-2 col-sm-8">
+    <div class="content col-sm-offset-1 col-sm-10">
     <h2> Update data of your {{ form.type.vars.value|capitalize }}.</h2>
       {{ form_start(form) }}
       {{ form_errors(form) }}
@@ -28,7 +28,7 @@
               {'class': 'col-sm-2 col-form-label'}
           }) }}
         {{ form_errors(form.content) }}
-        <div class="col-sm-7">
+        <div class="col-sm-10">
           {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
         </div>
       </div>
@@ -52,7 +52,10 @@
       </div>
 
       <div class="form-group row">
-        <div class="col-sm-7 col-sm-offset-2">
+        <div class="col-sm-offset-2">
+          <a href="{{ path('admin_extras') }}" class="btn btn-warning">
+            <span class="glyphicon glyphicon-chevron-left"><span> Back
+          </a>
         {{ form_widget(form.submit) }}
         </div>
       </div>

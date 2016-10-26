@@ -20,7 +20,7 @@
 {% block jumbotron %}
     <div class="jumbotron">
       <h2>{{ jumbotron.header }}</h2>
-      <p>{{ jumbotron.content }}</p>
+      <p>{{ jumbotron.content|raw }}</p>
     </div>
 {% endblock %}
 {% block content %}
