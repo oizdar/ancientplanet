@@ -5,10 +5,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="extras")
- * @ORM\Entity(repositoryClass="ExtrasRepository")
+ * @ORM\Table(name="pages")
+ * @ORM\Entity(repositoryClass="PagesRepository")
  */
-class Extras
+class Pages
 {
     /**
      * @ORM\Column(type="integer", options={"unsiged"=true})
@@ -16,11 +16,6 @@ class Extras
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $header;
 
     /**
      * @ORM\Column(type="text", nullable=false)
@@ -33,23 +28,9 @@ class Extras
     private $footer;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=false)
+     * @ORM\OneToOne(targetEntity="Page")
      */
-    private $type;
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Extras
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+    private $parent;
 
     /**
      * Get id
@@ -62,35 +43,11 @@ class Extras
     }
 
     /**
-     * Set header
-     *
-     * @param string $header
-     *
-     * @return Extras
-     */
-    public function setHeader($header)
-    {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Get header
-     *
-     * @return string
-     */
-    public function getHeader()
-    {
-        return $this->header;
-    }
-
-    /**
      * Set content
      *
      * @param string $content
      *
-     * @return Extras
+     * @return Pages
      */
     public function setContent($content)
     {
@@ -114,7 +71,7 @@ class Extras
      *
      * @param string $footer
      *
-     * @return Extras
+     * @return Pages
      */
     public function setFooter($footer)
     {
@@ -134,26 +91,26 @@ class Extras
     }
 
     /**
-     * Set type
+     * Set parent
      *
-     * @param string $type
+     * @param \AppBundle\Entity\Page $parent
      *
-     * @return Extras
+     * @return Pages
      */
-    public function setType($type)
+    public function setParent(\AppBundle\Entity\Page $parent = null)
     {
-        $this->type = $type;
+        $this->parent = $parent;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get parent
      *
-     * @return string
+     * @return \AppBundle\Entity\Page
      */
-    public function getType()
+    public function getParent()
     {
-        return $this->type;
+        return $this->parent;
     }
 }
