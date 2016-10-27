@@ -78,6 +78,9 @@ class DefaultController extends Controller
             $menu['title'] = $page->getMenuTitle();
             $menu['id'] = $page->getId();
             $this->templateData['menu'][] = $menu;
+            if ($page->getParent() === null) {
+                $this->templateData['topMenu'][] = $menu;
+            }
         }
     }
 }
