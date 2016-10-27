@@ -18,17 +18,22 @@ class Pages
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="string", length=60, nullable=false)
+     */
+    private $menuTitle;
+
+    /**
      * @ORM\Column(type="text", nullable=false)
      */
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $footer;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Page")
+     * @ORM\OneToOne(targetEntity="Pages")
      */
     private $parent;
 
@@ -67,30 +72,6 @@ class Pages
     }
 
     /**
-     * Set footer
-     *
-     * @param string $footer
-     *
-     * @return Pages
-     */
-    public function setFooter($footer)
-    {
-        $this->footer = $footer;
-
-        return $this;
-    }
-
-    /**
-     * Get footer
-     *
-     * @return string
-     */
-    public function getFooter()
-    {
-        return $this->footer;
-    }
-
-    /**
      * Set parent
      *
      * @param \AppBundle\Entity\Page $parent
@@ -112,5 +93,53 @@ class Pages
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Pages
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set menuTitle
+     *
+     * @param string $menuTitle
+     *
+     * @return Pages
+     */
+    public function setMenuTitle($menuTitle)
+    {
+        $this->menuTitle = $menuTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get menuTitle
+     *
+     * @return string
+     */
+    public function getMenuTitle()
+    {
+        return $this->menuTitle;
     }
 }

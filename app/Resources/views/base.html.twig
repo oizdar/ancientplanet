@@ -47,26 +47,15 @@
         {% block right_panel %}
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Egypt</h3>
+            <h3 class="panel-title">Menu</h3>
           </div>
           <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Persia</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Persia</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
+            <ul class="menu">
+              <li><a href="{{ path('homepage') }}">Homepage</a></li>
+            {% for page in menu %}
+                <li><a href="{{ path('page', {'id': page.id}) }}">{{ page.title }}</a></li>
+            {% endfor %}
+            </ul>
           </div>
         </div>
         {% endblock %}

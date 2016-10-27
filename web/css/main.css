@@ -38,3 +38,25 @@ h1, h2, .jumbotron > h3 {
     border-top: 1px solid #fda;
     background-color: #ffe;
 }
+
+.menu {
+    list-style-type: none;
+    padding: 0px;
+}
+
+
+.menu a {
+    text-shadow: rgb(150, 150, 150) -1px -1px 2px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #333;
+}
+.menu a:before {
+    content: '» ';
+    color: orange;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+    color: orange;
+}

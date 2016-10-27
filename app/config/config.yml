@@ -72,9 +72,13 @@ ivory_ck_editor:
         main_toolbar:
             toolbar: "main_toolbar"
             uiColor: "#ffdd99"
+        full_toolbar:
+            toolbar: "full_toolbar"
+            uiColor: "#ffdd99"
     toolbars:
         configs:
             main_toolbar: [ "Source", "@edit", "@link", "@special", "@color", "@tool", "/", "@font", "@items", "@justify"]
+            full_toolbar: [ "Source", "@edit", "PasteFromWord", "@link", "@special", "@color", "@tool", "/", "@font", "@items", "@justify", "@media"]
         items:
             edit:     [ "Cut", "Copy", "Paste", "-", "Undo", "Redo" ]
             items:    [ "Bold", "Italic", "Underline", "Strike", "Subscript", "RemoveFormat"]

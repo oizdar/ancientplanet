@@ -1,0 +1,37 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block row %}
+      <div class="content col-sm-offset-1 col-sm-10">
+        <h2> List of website editable elements: </h2>
+        {% for page in pages %}
+        <div class="extras-row">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th>Page Title:</th>
+                <td>{{ page.title }}</td>
+                <th>Menu Title:</th>
+                <td>{{ page.menuTitle }}</td>
+              </tr>
+              <tr>
+                <th>Content:</th>
+                <td colspan="3">{{ page.content|raw }}</td>
+              </tr>
+              <tr>
+                <th>Parent</th>
+                <td colspan="2"><em>
+                    {{ page.parent ?: 'Doesn\'t have parent page' }}
+                </em></td>
+                <td>
+                  <a class="btn btn-warning" href="{{ path('admin_pages_edit', {id:page.id}) }}">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
