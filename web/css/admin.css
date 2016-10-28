@@ -26,9 +26,13 @@ h1, h2 {
 }
 
 .extras-row > table th {
-    width: 95px;
+    width: 110px;
 }
 
 td:last-child {
-    width: 200px;
+    width: 180px;
+}
+tr:first-child {
+    font-size: 18px;
+    font-style: italic;
 }

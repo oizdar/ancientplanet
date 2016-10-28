@@ -111,6 +111,6 @@ class AdminPageController extends Controller
         $em->remove($page);
         $em->flush();
         $success = ['success' => 'Page deleted'];
-        return $this->forward('AppBundle:AdminPage:pages', $success);
+        return $this->forward('AppBundle:AdminPage:pages');
     }
 }
