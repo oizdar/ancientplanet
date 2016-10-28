@@ -3,6 +3,9 @@
 {% block row %}
       <div class="content col-sm-offset-1 col-sm-10">
         <h2> List of website editable elements: </h2>
+        {% if success is defined %}
+          <div>akdfjaowiejfkas</div>
+        {% endif %}
         {% for page in pages %}
         <div class="extras-row">
           <table class="table table-striped">
@@ -25,6 +28,11 @@
                 <td>
                   <a class="btn btn-warning" href="{{ path('admin_pages_edit', {id:page.id}) }}">
                   <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                  </a>
+                  <a class="btn btn-warning"
+                    onclick="if (confirm('Are you sure to delete this page?')) return true; return false"
+                    href="{{ path('admin_pages_delete', {id:page.id}) }}">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Delete
                   </a>
                 </td>
               </tr>

@@ -28,3 +28,7 @@ h1, h2 {
 .extras-row > table th {
     width: 95px;
 }
+
+td:last-child {
+    width: 200px;
+}

@@ -2,7 +2,14 @@
 
 {% block row %}
     <div class="content col-sm-offset-1 col-sm-10">
-    <h2> Update data of choosen Page </h2>
+    {% if addPage is defined %}
+      <h2> Add New Page </h2>
+    {% else %}
+      <h2> Update data of choosen Page </h2>
+    {% endif %}
+    {% if success is defined %}
+      <div class="alert alert-success" role="alert"><strong>{{ success }}</strong></div>
+    {% endif %}
       {{ form_start(form) }}
       {{ form_errors(form) }}
 
