@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -19,11 +20,19 @@ class Pages
 
     /**
      * @ORM\Column(type="string", length=150, nullable=true)
+     * @Assert\NotBlank(message = "Menu tittle must have between 3 and 21 characters")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=false)
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 21,
+     *     minMessage = "Menu tittle must have between 3 and 21 characters",
+     *     maxMessage = "Menu tittle must have between 3 and 21 characters"
+     * )
+     * @Assert\NotBlank(message = "Menu tittle must have between 3 and 21 characters")
      */
     private $menuTitle;
 
@@ -129,7 +138,6 @@ class Pages
     public function setMenuTitle($menuTitle)
     {
         $this->menuTitle = $menuTitle;
-
         return $this;
     }
 

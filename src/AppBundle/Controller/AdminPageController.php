@@ -68,12 +68,16 @@ class AdminPageController extends Controller
     {
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
-            $em->flush();
-            return $data->getId();
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($data);
+                $em->flush();
+                return $data->getId();
+            } else {
+                $this->templateData['error'] = true;
+            }
         }
     }
 

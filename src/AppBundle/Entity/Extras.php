@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -24,6 +25,8 @@ class Extras
 
     /**
      * @ORM\Column(type="text", nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\Length(min = 20)
      */
     private $content;
 

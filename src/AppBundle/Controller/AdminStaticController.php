@@ -62,11 +62,16 @@ class AdminStaticController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
-            $em->flush();
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($data);
+                $em->flush();
+                $this->templateData['success'] = 'Element updated';
+            } else {
+                $this->templateData['error'] = true;
+            }
         }
 
         $this->templateData['form'] = $form->createView();

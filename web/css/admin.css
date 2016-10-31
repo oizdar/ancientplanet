@@ -36,3 +36,7 @@ tr:first-child {
     font-size: 18px;
     font-style: italic;
 }
+.alert > ul {
+    list-style: none;
+    text-align: left;
+}
