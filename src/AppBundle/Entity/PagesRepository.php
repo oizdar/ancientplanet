@@ -10,4 +10,13 @@ namespace AppBundle\Entity;
  */
 class PagesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPossibleParents($id)
+    {
+        $id = intval($id);
+        $query = 'SELECT p FROM AppBundle:Pages p ';
+        if (isset($id) && $id >= 0) {
+            $query .= 'where p.id != ' . $id;
+        }
+        return $this->getEntityManager()->createQuery($query)->getResult();
+    }
 }

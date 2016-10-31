@@ -7,10 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Pages;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\{TextType, HiddenType, ChoiceType, SubmitType };
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AdminPageController extends Controller
 {
@@ -49,13 +47,23 @@ class AdminPageController extends Controller
      * @param  string $label Button Label
      * @return $form
      */
-    private function generateForm($page, string $label = 'Save')
+    private function generateForm(Pages $page, string $label = 'Save', int $id = null)
     {
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Pages');
+        $options = $pages->getPossibleParents($id);
+        $choices['Leave and set as TOP'] = null;
+        foreach ($options as $option) {
+            $choices[$option->getMenuTitle()] = $option;
+        }
+
         $form = $this->createFormBuilder($page)
             ->add('menuTitle', TextType::class)
             ->add('title', TextType::class, ['required' => false])
             ->add('content', CKEditorType::class, ['config_name' => 'full_toolbar'])
-            ->add('parent', TextType::class, ['required' => false])
+            ->add('parent', ChoiceType::class, [
+                'choices' => $choices,
+                'label' => 'Parent Page'
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => $label,
                 'attr' => ['class' => 'btn btn-warning']
@@ -88,7 +96,7 @@ class AdminPageController extends Controller
     {
         $pages = $this->getDoctrine()->getRepository('AppBundle:Pages');
         $page = $pages->find($id);
-        $form = $this->generateForm($page, 'Save Changes');
+        $form = $this->generateForm($page, 'Save Changes', $id);
 
         $updated = $this->formHandleRequest($request, $form);
         if (isset($updated)) {

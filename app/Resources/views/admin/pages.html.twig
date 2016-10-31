@@ -27,7 +27,7 @@
               <tr>
                 <th>Parent</th>
                 <td colspan="2"><em>
-                    {{ page.parent ?: 'Doesn\'t have parent page' }}
+                    {{ page.parent ? page.parent.menuTitle : 'Doesn\'t have parent page' }}
                 </em></td>
                 <td>
                   <a class="btn btn-warning" href="{{ path('admin_pages_edit', {id:page.id}) }}">

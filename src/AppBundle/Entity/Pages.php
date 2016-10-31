@@ -60,7 +60,6 @@ class Pages
      * Set content
      *
      * @param string $content
-     *
      * @return Pages
      */
     public function setContent($content)
@@ -83,11 +82,10 @@ class Pages
     /**
      * Set parent
      *
-     * @param \AppBundle\Entity\Page $parent
-     *
+     * @param \AppBundle\Entity\Pages $parent
      * @return Pages
      */
-    public function setParent(\AppBundle\Entity\Page $parent = null)
+    public function setParent(\AppBundle\Entity\Pages $parent = null)
     {
         $this->parent = $parent;
 
