@@ -19,4 +19,24 @@ class PagesRepository extends \Doctrine\ORM\EntityRepository
         }
         return $this->getEntityManager()->createQuery($query)->getResult();
     }
+
+    /**
+     * Return Top pages data needed for generating menus
+     * @return array
+     */
+    public function findTopPages()
+    {
+        $query = 'SELECT p.id, p.menuTitle FROM AppBundle:Pages p where p.parent IS NULL';
+        return $this->getEntityManager()->createQuery($query)->getResult();
+    }
+
+    /**
+     * Return Sub pages of page with choosen id returns data needed for generating menus
+     * @return array
+     */
+    public function findSubPages(int $id)
+    {
+        $query = 'SELECT p.id, p.menuTitle FROM AppBundle:Pages p where p.parent =' . $id;
+        return $this->getEntityManager()->createQuery($query)->getResult();
+    }
 }

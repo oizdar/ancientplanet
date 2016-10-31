@@ -72,15 +72,25 @@ class DefaultController extends Controller
      */
     private function setMenu(\AppBundle\Entity\PagesRepository $pagesEntity)
     {
-        $pages = $pagesEntity->findAll();
+        $pages = $pagesEntity->findTopPages();
+        $menu = $this->generateMenu($pages, $pagesEntity);
+        $this->templateData['menu'] = $menu;
+    }
 
+    private function generateMenu(array $pages, $pagesEntity)
+    {
+        $menu = [];
         foreach ($pages as $page) {
-            $menu['title'] = $page->getMenuTitle();
-            $menu['id'] = $page->getId();
-            $this->templateData['menu'][] = $menu;
-            if ($page->getParent() === null) {
-                $this->templateData['topMenu'][] = $menu;
+            $link['menuTitle'] = $page['menuTitle'];
+            $link['id'] = $page['id'];
+            $submenu = $pagesEntity->findSubPages($page['id']);
+            if (!empty($submenu)) {
+                $link['submenu'] = $this->generateMenu($submenu, $pagesEntity);
+            } else {
+                $link['submenu'] = null;
             }
+            $menu[] = $link;
         }
+        return $menu;
     }
 }

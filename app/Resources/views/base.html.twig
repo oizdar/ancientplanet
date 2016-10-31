@@ -29,21 +29,24 @@
 
         {% block navbar_elems %}
         {% endblock %}
-        {% for nav in topMenu %}
-          <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.title }}</a></li>
-        {% endfor %}
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        {% for nav in menu %}
+          {% if nav.submenu %}
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ nav.menuTitle }}<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.menuTitle }}</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Sub pages:</li>
+                {% for sub in nav.submenu %}
+                  <li><a href="{{ path('page', {'id': sub.id}) }}">{{ sub.menuTitle }}</a></li>
+                {% endfor %}
               </ul>
           </li>
+          {% else %}
+          <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.menuTitle }}</a></li>
+          {% endif %}
+        {% endfor %}
+
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -69,7 +72,7 @@
             <ul class="menu">
               <li><a href="{{ path('homepage') }}">Homepage</a></li>
             {% for page in menu %}
-                <li><a href="{{ path('page', {'id': page.id}) }}">{{ page.title }}</a></li>
+                <li><a href="{{ path('page', {'id': page.id}) }}">{{ page.menuTitle }}</a></li>
             {% endfor %}
             </ul>
           </div>

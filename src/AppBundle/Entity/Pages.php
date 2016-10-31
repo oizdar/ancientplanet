@@ -106,7 +106,6 @@ class Pages
      * Set title
      *
      * @param string $title
-     *
      * @return Pages
      */
     public function setTitle($title)
@@ -130,7 +129,6 @@ class Pages
      * Set menuTitle
      *
      * @param string $menuTitle
-     *
      * @return Pages
      */
     public function setMenuTitle($menuTitle)
