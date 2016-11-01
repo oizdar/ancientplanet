@@ -1,49 +1,77 @@
 {% extends 'base_admin.html.twig' %}
 
 {% block row %}
-      <div class="content col-sm-offset-1 col-sm-10">
-        <h2><a class="btn btn-warning"
-              href="{{ path('admin_add_page') }}">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Page
-            </a>
-            List of website editable elements: </h2>
-        {% if success is defined %}
-          <div>akdfjaowiejfkas</div>
-        {% endif %}
-        {% for page in pages %}
-        <div class="extras-row">
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <th>Page Title:</th>
-                <td>{{ page.title }}</td>
-                <th>Menu Title:</th>
-                <td>{{ page.menuTitle }}</td>
-              </tr>
-              <tr>
-                <th>Content:</th>
-                <td colspan="3">{{ page.content|slice(0, 150)|raw }}</td>
-              </tr>
-              <tr>
-                <th>Parent Page:</th>
-                <td colspan="2"><em>
-                    {{ page.parent ? page.parent.menuTitle : 'Doesn\'t have parent page' }}
-                </em></td>
-                <td>
-                  <a class="btn btn-warning" href="{{ path('admin_pages_edit', {id:page.id}) }}">
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
-                  </a>
-                  <a class="btn btn-warning"
-                    onclick="if (confirm('Are you sure to delete this page?')) return true; return false"
-                    href="{{ path('admin_pages_delete', {id:page.id}) }}">
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        {% endfor %}
-    </div>
+  <div class="content col-sm-offset-1 col-sm-10">
+    <h2>
+      <a class="btn btn-warning"
+          href="{{ path('admin_add_page') }}">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Page
+      </a>
+      List of created Pages:
+    </h2>
+    {% if success is defined %}
+      <div>akdfjaowiejfkas</div>
+    {% endif %}
+    {% for page in pages %}
+      <div class="extras-row">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Page Title:</th>
+              <td>{{ page.title }}</td>
+              <th>Menu Title:</th>
+              <td>{{ page.menuTitle }}</td>
+            </tr>
+            <tr>
+              <th>Content:</th>
+              <td colspan="3">{{ page.content|slice(0, 150)|raw }}</td>
+            </tr>
+            <tr>
+              <th>Parent Page:</th>
+              <td colspan="2"><em>
+                  {{ page.parent ? page.parent.menuTitle : 'Doesn\'t have parent page' }}
+              </em></td>
+              <td>
+                <a class="btn btn-warning" href="{{ path('admin_page_edit', {id:page.id}) }}">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                </a>
+                <a class="btn btn-warning"
+                  onclick="if (confirm('Are you sure to delete this page?')) return true; return false"
+                  href="{{ path('admin_page_delete', {id:page.id}) }}">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    {% endfor %}
+    {% if pagination is defined %}
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          {% if pagination.previous %}
+            <li>
+              <a href="{{ path('admin_pages_offset', {offset:pagination.previous}) }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          {% endif %}
+          {% for i in 1..pagination.pages %}
+            <li>
+              <a {% if i == pagination.page %}class="page-active"{% endif %}
+                href="{{ path('admin_pages_offset', {offset:i}) }}">{{ i }}</a>
+            </li>
+          {% endfor %}
+          {% if pagination.next %}
+            <li>
+              <a href="{{ path('admin_pages_offset', {offset:pagination.next}) }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
 {% endblock %}
 

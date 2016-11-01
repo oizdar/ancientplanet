@@ -19,10 +19,29 @@ class AdminPageController extends Controller
      */
     public function pagesAction()
     {
-            $pages = $this->getDoctrine()->getRepository('AppBundle:Pages');
-            $this->templateData['pages'] = $pages->findAll();
-            return $this->render('admin/pages.html.twig', $this->templateData);
+            return $this->forward('AppBundle:AdminPage:pagesOffset', ['offset' => 1]);
     }
+
+    /**
+     * @Route("/admin/pages/{offset}", name="admin_pages_offset")
+     */
+    public function pagesOffsetAction(int $offset)
+    {
+        $pages = $this->getDoctrine()->getRepository('AppBundle:Pages');
+        $count = $pages->countAll();
+        $this->templateData['pages'] = $pages->findBy([], [], 2, ($offset-1)*2);
+        if ($count > 2) {
+            $allPages = ceil($count/2);
+            $this->templateData['pagination'] = [
+                'pages' => $allPages,
+                'page' => $offset,
+                'previous' => ($offset > 1) ? $offset-1 : false,
+                'next' => ($offset < $allPages) ? $offset+1 : false
+            ];
+        }
+        return $this->render('admin/pages.html.twig', $this->templateData);
+    }
+
 
     /**
      * @Route("/admin/add/page/", name="admin_add_page")
@@ -89,7 +108,7 @@ class AdminPageController extends Controller
     }
 
     /**
-     * @Route("/admin/pages/{id}", name="admin_pages_edit")
+     * @Route("/admin/page/{id}", name="admin_page_edit")
      */
     public function pagesEditAction(int $id, Request $request)
     {
@@ -107,7 +126,7 @@ class AdminPageController extends Controller
     }
 
     /**
-     * @Route("/admin/pages/delete/{id}", name="admin_pages_delete")
+     * @Route("/admin/page/delete/{id}", name="admin_page_delete")
      */
     public function pagesDeleteAction(int $id)
     {

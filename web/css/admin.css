@@ -40,3 +40,9 @@ tr:first-child {
     list-style: none;
     text-align: left;
 }
+
+.page-active {
+    background-color: #e91 !important;
+    color: #fff !important;
+    font-weight: bold;
+}

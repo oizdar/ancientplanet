@@ -39,4 +39,14 @@ class PagesRepository extends \Doctrine\ORM\EntityRepository
         $query = 'SELECT p.id, p.menuTitle FROM AppBundle:Pages p where p.parent =' . $id;
         return $this->getEntityManager()->createQuery($query)->getResult();
     }
+
+    /**
+     * Returns number of all pages
+     * @return integer
+     */
+    public function countAll()
+    {
+        $query = 'SELECT COUNT(p) FROM AppBundle:Pages p';
+        return $this->getEntityManager()->createQuery($query)->getSingleScalarResult();
+    }
 }
