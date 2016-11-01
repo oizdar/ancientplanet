@@ -89,7 +89,7 @@ class DefaultController extends Controller
             } else {
                 $link['submenu'] = null;
             }
-            $menu[] = $link;
+            $menu[$page['id']] = $link;
         }
         return $menu;
     }
