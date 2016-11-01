@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -11,9 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Pages
 {
     /**
-     * @ORM\Column(type="integer", options={"unsiged"=true})
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     private $id;
 
@@ -24,6 +24,13 @@ class Pages
 
     /**
      * @ORM\Column(type="string", length=60, nullable=false)
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 21,
+     *     minMessage = "Menu tittle must have between 3 and 21 characters",
+     *     maxMessage = "Menu tittle must have between 3 and 21 characters"
+     * )
+     * @Assert\NotBlank(message = "Menu tittle must have between 3 and 21 characters")
      */
     private $menuTitle;
 
@@ -33,7 +40,8 @@ class Pages
     private $content;
 
     /**
-     * @ORM\OneToOne(targetEntity="Pages")
+     * @ORM\ManyToOne(targetEntity="Pages")
+     * @ORM\JoinColumn(name="parent", referencedColumnName="id")
      */
     private $parent;
 
@@ -51,7 +59,6 @@ class Pages
      * Set content
      *
      * @param string $content
-     *
      * @return Pages
      */
     public function setContent($content)
@@ -74,11 +81,10 @@ class Pages
     /**
      * Set parent
      *
-     * @param \AppBundle\Entity\Page $parent
-     *
+     * @param \AppBundle\Entity\Pages $parent
      * @return Pages
      */
-    public function setParent(\AppBundle\Entity\Page $parent = null)
+    public function setParent(\AppBundle\Entity\Pages $parent = null)
     {
         $this->parent = $parent;
 
@@ -99,7 +105,6 @@ class Pages
      * Set title
      *
      * @param string $title
-     *
      * @return Pages
      */
     public function setTitle($title)
@@ -117,5 +122,96 @@ class Pages
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set menuTitle
+     *
+     * @param string $menuTitle
+     * @return Pages
+     */
+    public function setMenuTitle($menuTitle)
+    {
+        $this->menuTitle = $menuTitle;
+        return $this;
+    }
+
+    /**
+     * Get menuTitle
+     *
+     * @return string
+     */
+    public function getMenuTitle()
+    {
+        return $this->menuTitle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->parent = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Pages
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Set children
+     *
+     * @param \AppBundle\Entity\Pages $children
+     *
+     * @return Pages
+     */
+    public function setChildren(\AppBundle\Entity\Pages $children = null)
+    {
+        $this->children = $children;
+
+        return $this;
+    }
+
+    /**
+     * Get children
+     *
+     * @return \AppBundle\Entity\Pages
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Add parent
+     *
+     * @param \AppBundle\Entity\Pages $parent
+     *
+     * @return Pages
+     */
+    public function addParent(\AppBundle\Entity\Pages $parent)
+    {
+        $this->parent[] = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Remove parent
+     *
+     * @param \AppBundle\Entity\Pages $parent
+     */
+    public function removeParent(\AppBundle\Entity\Pages $parent)
+    {
+        $this->parent->removeElement($parent);
     }
 }

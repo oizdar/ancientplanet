@@ -61,8 +61,7 @@ class AdminPageController extends Controller
             ->add('title', TextType::class, ['required' => false])
             ->add('content', CKEditorType::class, ['config_name' => 'full_toolbar'])
             ->add('parent', ChoiceType::class, [
-                'choices' => $choices,
-                'label' => 'Parent Page'
+                'choices' => $choices
             ])
             ->add('submit', SubmitType::class, [
                 'label' => $label,
@@ -104,7 +103,6 @@ class AdminPageController extends Controller
         }
 
         $this->templateData['form'] = $form->createView();
-
         return $this->render('admin/pages_edit.html.twig', $this->templateData);
     }
 

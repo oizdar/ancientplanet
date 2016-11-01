@@ -12,15 +12,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Pages
 {
     /**
-     * @ORM\Column(type="integer", options={"unsiged"=true})
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=150, nullable=true)
-     * @Assert\NotBlank(message = "Menu tittle must have between 3 and 21 characters")
      */
     private $title;
 
@@ -42,7 +40,8 @@ class Pages
     private $content;
 
     /**
-     * @ORM\OneToOne(targetEntity="Pages")
+     * @ORM\ManyToOne(targetEntity="Pages")
+     * @ORM\JoinColumn(name="parent", referencedColumnName="id")
      */
     private $parent;
 
@@ -145,5 +144,74 @@ class Pages
     public function getMenuTitle()
     {
         return $this->menuTitle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->parent = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Pages
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Set children
+     *
+     * @param \AppBundle\Entity\Pages $children
+     *
+     * @return Pages
+     */
+    public function setChildren(\AppBundle\Entity\Pages $children = null)
+    {
+        $this->children = $children;
+
+        return $this;
+    }
+
+    /**
+     * Get children
+     *
+     * @return \AppBundle\Entity\Pages
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Add parent
+     *
+     * @param \AppBundle\Entity\Pages $parent
+     *
+     * @return Pages
+     */
+    public function addParent(\AppBundle\Entity\Pages $parent)
+    {
+        $this->parent[] = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Remove parent
+     *
+     * @param \AppBundle\Entity\Pages $parent
+     */
+    public function removeParent(\AppBundle\Entity\Pages $parent)
+    {
+        $this->parent->removeElement($parent);
     }
 }

@@ -12,9 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Extras
 {
     /**
-     * @ORM\Column(type="integer", options={"unsiged"=true})
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     private $id;
 
