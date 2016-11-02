@@ -32,18 +32,18 @@
         {% for nav in menu %}
           {% if nav.submenu %}
             <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ nav.menuTitle }}<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ nav.menuTitle|capitalize }}<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.menuTitle }}</a></li>
+                <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.menuTitle|capitalize }}</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Sub pages:</li>
                 {% for sub in nav.submenu %}
-                  <li><a href="{{ path('page', {'id': sub.id}) }}">{{ sub.menuTitle }}</a></li>
+                  <li><a href="{{ path('page', {'id': sub.id}) }}">{{ sub.menuTitle|capitalize }}</a></li>
                 {% endfor %}
               </ul>
           </li>
           {% else %}
-          <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.menuTitle }}</a></li>
+          <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.menuTitle|capitalize }}</a></li>
           {% endif %}
         {% endfor %}
 
@@ -72,7 +72,7 @@
             <ul class="menu">
               <li><a href="{{ path('homepage') }}">Homepage</a></li>
             {% for page in menu %}
-                <li><a href="{{ path('page', {'id': page.id}) }}">{{ page.menuTitle }}</a></li>
+                <li><a href="{{ path('page', {'id': page.id}) }}">{{ page.menuTitle|capitalize }}</a></li>
             {% endfor %}
             </ul>
           </div>

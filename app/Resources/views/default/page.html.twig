@@ -20,7 +20,7 @@
     </div>
     {% endfor %}
 
-    {% if menu[page.id].submenu %}
+    {% if menu[page.id] is defined and menu[page.id].submenu %}
     <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">{{ page.menuTitle }}</h3>

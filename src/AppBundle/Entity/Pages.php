@@ -14,6 +14,7 @@ class Pages
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
      */
     private $id;
 
@@ -40,7 +41,7 @@ class Pages
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Pages")
+     * @ORM\ManyToOne(targetEntity="Pages", inversedBy="Pages")
      * @ORM\JoinColumn(name="parent", referencedColumnName="id")
      */
     private $parent;

@@ -29,9 +29,9 @@ class AdminPageController extends Controller
     {
         $pages = $this->getDoctrine()->getRepository('AppBundle:Pages');
         $count = $pages->countAll();
-        $this->templateData['pages'] = $pages->findBy([], [], 2, ($offset-1)*2);
-        if ($count > 2) {
-            $allPages = ceil($count/2);
+        $this->templateData['pages'] = $pages->findBy([], [], 5, ($offset-1)*5);
+        if ($count > 5) {
+            $allPages = ceil($count/5);
             $this->templateData['pagination'] = [
                 'pages' => $allPages,
                 'page' => $offset,
@@ -54,7 +54,7 @@ class AdminPageController extends Controller
         $added = $this->formHandleRequest($request, $form);
         if (isset($added)) {
             $this->templateData['success'] = 'New page added';
-            return $this->redirectToRoute('admin_pages_edit', ['id' => $added]);
+            return $this->redirectToRoute('admin_page_edit', ['id' => $added]);
         }
         $this->templateData['addPage'] = true;
         $this->templateData['form'] = $form->createView();
