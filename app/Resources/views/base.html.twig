@@ -47,7 +47,7 @@
           {% endif %}
         {% endfor %}
 
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="{{ path('contact') }}">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -74,6 +74,7 @@
             {% for page in menu %}
                 <li><a href="{{ path('page', {'id': page.id}) }}">{{ page.menuTitle|capitalize }}</a></li>
             {% endfor %}
+              <li><a href="{{ path('contact') }}">Contact</a></li>
             </ul>
           </div>
         </div>
