@@ -1,7 +1,7 @@
 {% extends 'base_admin.html.twig' %}
 
 {% block row %}
-  <div class="content col-sm-offset-1 col-sm-10">
+  <div class="content col-xs-12">
     <h2>
       <a class="btn btn-warning"
           href="{{ path('admin_add_page') }}">
@@ -17,10 +17,10 @@
         <table class="table table-striped">
           <tbody>
             <tr>
-              <th>Page Title:</th>
-              <td>{{ page.title }}</td>
               <th>Menu Title:</th>
               <td>{{ page.menuTitle }}</td>
+              <th>Page Title:</th>
+              <td>{{ page.title }}</td>
             </tr>
             <tr>
               <th>Content:</th>

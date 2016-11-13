@@ -30,11 +30,17 @@ h1, h2 {
 }
 
 td:last-child {
-    width: 180px;
+    width: 350px;
 }
+
+tr:last-child > td:last-child{
+    text-align: right;
+}
+
 tr:first-child {
     font-size: 18px;
     font-style: italic;
+    text-align: left;
 }
 .alert > ul {
     list-style: none;
