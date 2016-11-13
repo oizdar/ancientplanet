@@ -33,7 +33,6 @@ class ContactController extends BaseController
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $data = $form->getData();
-                var_dump($data);
                 $this->sendEmail($data);
             }
         }

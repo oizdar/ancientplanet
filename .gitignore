@@ -17,3 +17,9 @@
 ancientplanet.sublime-project
 ancientplanet.sublime-workspace
 
+
+src/AppBundle/Entity/User.php
+src/AppBundle/Entity/User.php~
+src/AppBundle/Entity/UserRepository.php
+
+

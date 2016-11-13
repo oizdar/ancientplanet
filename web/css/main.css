@@ -60,3 +60,13 @@ h1, h2, .jumbotron > h3 {
     text-decoration: underline;
     color: orange;
 }
+
+.dropdown-menu > li > a:hover {
+    background-color: #fda !important;
+    background-image: linear-gradient(to bottom,#fcf8e3 0,#faf2cc 100%);
+
+}
+
+.divider {
+    background-color: #fda !important;
+}
