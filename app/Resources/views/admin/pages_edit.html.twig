@@ -7,10 +7,10 @@
     {% else %}
       <h2> Update data of choosen Page </h2>
     {% endif %}
-      {{ form_start(form) }}
     {% if success is defined %}
       <div class="alert alert-success" role="alert"><strong>{{ success }}</strong></div>
     {% endif %}
+      {{ form_start(form) }}
     {% if error is defined %}
       <div class="alert alert-danger" role="alert">
         {{ form_errors(form) }}

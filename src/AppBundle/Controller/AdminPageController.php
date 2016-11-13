@@ -25,8 +25,10 @@ class AdminPageController extends Controller
     /**
      * @Route("/admin/pages/{offset}", name="admin_pages_offset")
      */
-    public function pagesOffsetAction(int $offset)
+    public function pagesOffsetAction(Request $request, int $offset)
     {
+        $this->templateData['deleted'] = $request->get('deleted');
+
         $pages = $this->getDoctrine()->getRepository('AppBundle:Pages');
         $count = $pages->countAll();
         $this->templateData['pages'] = $pages->findBy([], [], 5, ($offset-1)*5);
@@ -36,7 +38,7 @@ class AdminPageController extends Controller
                 'pages' => $allPages,
                 'page' => $offset,
                 'previous' => ($offset > 1) ? $offset-1 : false,
-                'next' => ($offset < $allPages) ? $offset+1 : false
+                'next' => ($offset < $allPages) ? $offset+1 : false,
             ];
         }
         return $this->render('admin/pages.html.twig', $this->templateData);
@@ -54,7 +56,7 @@ class AdminPageController extends Controller
         $added = $this->formHandleRequest($request, $form);
         if (isset($added)) {
             $this->templateData['success'] = 'New page added';
-            return $this->redirectToRoute('admin_page_edit', ['id' => $added]);
+            return $this->redirectToRoute('admin_page_edit', ['id' => $added, 'added' => true]);
         }
         $this->templateData['addPage'] = true;
         $this->templateData['form'] = $form->createView();
@@ -112,6 +114,9 @@ class AdminPageController extends Controller
      */
     public function pagesEditAction(int $id, Request $request)
     {
+        if ($request->get('added')) {
+            $this->templateData['success'] = 'Page successfully added';
+        }
         $pages = $this->getDoctrine()->getRepository('AppBundle:Pages');
         $page = $pages->find($id);
         $form = $this->generateForm($page, 'Save Changes', $id);
@@ -140,6 +145,6 @@ class AdminPageController extends Controller
         $em->remove($page);
         $em->flush();
         $success = ['success' => 'Page deleted'];
-        return $this->forward('AppBundle:AdminPage:pages');
+        return $this->forward('AppBundle:AdminPage:pagesOffset', ['offset' => 1, 'deleted' => true]);
     }
 }

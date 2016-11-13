@@ -9,8 +9,8 @@
       </a>
       List of created Pages:
     </h2>
-    {% if success is defined %}
-      <div>akdfjaowiejfkas</div>
+    {% if deleted %}
+      <div class="alert alert-info" role="alert">Page succesfully <strong>deleted!</strong></div>
     {% endif %}
     {% for page in pages %}
       <div class="extras-row">
