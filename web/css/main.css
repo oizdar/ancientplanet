@@ -32,6 +32,9 @@ h1, h2, .jumbotron > h3 {
     border-color: #fda;
     background-image: linear-gradient(to bottom,#fcf8e3 0,#faf2cc 100%);
 }
+.panel-default > .panel-body {
+    background-color: #ffe;
+}
 
 .footer {
     height: 30px;
@@ -65,6 +68,9 @@ h1, h2, .jumbotron > h3 {
     background-color: #fda !important;
     background-image: linear-gradient(to bottom,#fcf8e3 0,#faf2cc 100%);
 
+}
+.dropdown-menu {
+    background-color: #ffe !important;
 }
 
 .divider {

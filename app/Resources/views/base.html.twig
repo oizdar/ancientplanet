@@ -36,7 +36,7 @@
               <ul class="dropdown-menu">
                 <li><a href="{{ path('page', {'id': nav.id}) }}">{{ nav.menuTitle|capitalize }}</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Sub pages:</li>
+                <li class="dropdown-header">More:</li>
                 {% for sub in nav.submenu %}
                   <li><a href="{{ path('page', {'id': sub.id}) }}">{{ sub.menuTitle|capitalize }}</a></li>
                 {% endfor %}
