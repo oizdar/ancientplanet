@@ -63,6 +63,7 @@ class AdminPageController extends Controller
         return $this->render('admin/pages_edit.html.twig', $this->templateData);
     }
 
+
     /**
      * Creates form to adding pages
      * @param  string $label Button Label
@@ -76,7 +77,6 @@ class AdminPageController extends Controller
         foreach ($options as $option) {
             $choices[$option->getMenuTitle()] = $option;
         }
-
         $form = $this->createFormBuilder($page)
             ->add('menuTitle', TextType::class)
             ->add('title', TextType::class, ['required' => false])
@@ -114,6 +114,7 @@ class AdminPageController extends Controller
      */
     public function pagesEditAction(int $id, Request $request)
     {
+        $token = null;
         if ($request->get('added')) {
             $this->templateData['success'] = 'Page successfully added';
         }

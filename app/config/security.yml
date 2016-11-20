@@ -26,6 +26,9 @@ security:
             form_login:
                 login_path: /admin/login/
                 check_path: /admin/login/
+                csrf_token_generator: security.csrf.token_manager
+                csrf_parameter: _csrf_security_token
+                csrf_token_id: ancientplanet_token
             logout:
                 path: /admin/logout/
                 target: /

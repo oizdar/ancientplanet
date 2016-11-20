@@ -17,6 +17,7 @@
             <label for="pass">Password:</label>
             <input type="password" id="pass" class="form-control" placeholder="Password" name="_password"/>
         </div>
+        <input type="hidden" name="_csrf_security_token" value="{{ csrf_token('ancientplanet_token') }}">
         <button type="submit" class="btn btn-warning col-xs-offset-10"><span class="glyphicon glyphicon-user"></span> Login</button>
         </form>
     </div>

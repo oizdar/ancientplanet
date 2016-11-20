@@ -16,8 +16,6 @@ class ContactController extends BaseController
     {
         $this->setBasicData();
 
-
-
         $form = $this->createFormBuilder()
             ->add('title', TextType::class/*, ['required' => false]*/)
             ->add('content', TextareaType::class)
@@ -58,6 +56,7 @@ class ContactController extends BaseController
             ),
             'text/html'
         );
+
         /*
          * If you also want to include a plaintext version of the message
         ->addPart(
